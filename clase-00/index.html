@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Clase 00 | Programación en Backend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      // EJERCICIO 1
+      var numero1 = 5;
+      var numero2 = 8;
+
+      if (numero1 < numero2) {
+        console.log("numero1 no es mayor que numero2");
+      }
+
+      if (0 < numero2) {
+        console.log("numero2 es positivo");
+      }
+
+      if (numero1 < 0) {
+        console.log("numero1 es negativo o distinto a cero");
+      }
+
+      if (++numero1 < numero2) {
+        console.log(
+          "incrementar en 1 unidad el valor de numero1 no lo hace mayor que numero dos"
+        );
+      }
+
+      //EJERCICIO 2
+      const valores = [true, 5, false, "hola", "adios", 2];
+
+      function getTextoMasLargo(array) {
+        let textoLargo = "";
+        array.forEach((element) => {
+          if (typeof element === "string") {
+            if (element.length > textoLargo.length) {
+              textoLargo = element;
+            }
+          }
+        });
+        return textoLargo;
+      }
+      // console.log(getTextoMasLargo(valores));
+
+      function getFalseIndex(array) {
+        let falseIndex;
+        array.forEach((element, index) => {
+          if (element === false) {
+            falseIndex = index;
+          }
+        });
+        return falseIndex;
+      }
+
+      console.log(getFalseIndex(valores));
+
+      function suma(a, b) {
+        return a + b;
+      }
+
+      function resta(a, b) {
+        return a - b;
+      }
+
+      function mult(a, b) {
+        return a * b;
+      }
+
+      function div(a, b) {
+        return a / b;
+      }
+
+      function operar(array, operator) {
+        let nums = [];
+        array.forEach((element) => {
+          if (typeof element === "number") {
+            nums.push(element);
+          }
+        });
+
+        return operator(nums[0], nums[1]);
+      }
+
+      //   console.log(operar(valores, suma));
+
+      // EJERCICIO 3
+      const mesesDelAnio = {
+        meses: [
+          "enero",
+          "febrero",
+          "marzo",
+          "abril",
+          "mayo",
+          "junio",
+          "julio",
+          "agosto",
+          "septiembre",
+          "octubre",
+          "noviembre",
+          "diciembre",
+        ],
+        mostrarMeses: function () {
+          this.meses.forEach((mes) => {
+            console.log(mes);
+          });
+        },
+        getNumeroMes: function (mes) {
+          console.log(this.meses.indexOf(mes) + 1);
+        },
+        getLetrasMes: function () {
+          this.meses.forEach((mes) => {
+            console.log(mes.substr(0, 3));
+          });
+        },
+      };
+
+      mesesDelAnio.mostrarMeses();
+      mesesDelAnio.getNumeroMes("agosto");
+      mesesDelAnio.getLetrasMes();
+    </script>
+  </body>
+</html>
