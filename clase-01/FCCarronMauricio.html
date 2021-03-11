@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Clase 01 | Programacion en BackEnd</title>
+  </head>
+  <body>
+    <script>
+      function Usuario(nombre, apellido, libros = [], mascotas = []) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.libros = libros;
+        this.mascotas = mascotas;
+      }
+
+      Usuario.prototype.getFullName = function () {
+        return `${this.apellido} ${this.nombre}`;
+      };
+
+      Usuario.prototype.addMascota = function (mascota) {
+        this.mascotas.push(mascota);
+      };
+
+      Usuario.prototype.getMascotas = function () {
+        return this.mascotas.length;
+      };
+
+      Usuario.prototype.addBook = function (book, autor) {
+        this.libros.push({
+          nombre: book,
+          autor: autor,
+        });
+      };
+
+      Usuario.prototype.getBooks = function () {
+        let bookName = [];
+        this.libros.forEach((libro) => {
+          bookName.push(libro.nombre);
+        });
+
+        return bookName;
+      };
+
+      const mauri = new Usuario(
+        "Mauricio",
+        "Carron",
+        [
+          { nombre: "1984", autor: "Orwell, George" },
+          { nombre: "Un Mundo Feliz", autor: "Aldous Huxley" },
+        ],
+        ["Litia", "Noa"]
+      );
+    </script>
+  </body>
+</html>
