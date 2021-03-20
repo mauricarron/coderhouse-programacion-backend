@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.newOper = exports.Operacion = void 0;
 var Operacion = /** @class */ (function () {
     function Operacion(n1, n2, oper) {
