@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"></script>
+    <title>Desafio Obersables - Clase 04</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      name="user-text"
+      id="user-text"
+      placeholder="Ingrese el texto a invertir"
+    />
+    <span id="inverted-text"></span>
+
+    <script>
+      const { Observable } = rxjs;
+
+      const $userText = document.querySelector("#user-text");
+      const $invertedText = document.querySelector("#inverted-text");
+
+      const observableUserInput = new Observable((subscriber) => {
+        $userText.addEventListener("input", () => {
+          const userInput = $userText.value;
+          const invertedUserInput = userInput.split("").reverse().join("");
+
+          if (userInput.toLowerCase() === "error") {
+            subscriber.error("Se ingreso la clave para deterner el Obervable.");
+          } else if (userInput.toLowerCase() === "complete") {
+            console.log("La operacion termino con exito.");
+            subscriber.complete();
+          } else {
+            subscriber.next(invertedUserInput);
+          }
+        });
+
+        return () => {
+          $userText.disable = true;
+          $invertedText.textContent = "";
+          console.log("unsuscribe");
+        };
+      });
+
+      const subscriber = observableUserInput.subscribe((invertedText) => {
+        $invertedText.textContent = invertedText;
+      });
+
+      setTimeout(() => {
+        subscriber.unsubscribe();
+      }, 30 * 1000);
+    </script>
+  </body>
+</html>

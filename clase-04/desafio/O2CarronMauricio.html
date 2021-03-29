@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"></script>
+    <!-- <script src="https://unpkg.com/@reactivex/rxjs@6.6.3/dist/global/rxjs.umd.js"></script> -->
+    <title>Desafio Obersables - Clase 04</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      name="user-text"
+      id="user-text"
+      placeholder="Ingrese el texto a invertir"
+    />
+    <span id="inverted-text"></span>
+
+    <script type="module">
+      import { fromEvent } from "https://dev.jspm.io/rxjs@6/_esm2015";
+      import { map } from "https://dev.jspm.io/rxjs@6/_esm2015/operators";
+
+      const $userText = document.querySelector("#user-text");
+      const $invertedText = document.querySelector("#inverted-text");
+
+      const observableUserInput = fromEvent($userText, "input");
+      const subscriber = observableUserInput
+        .pipe(
+          map((e) => {
+            const userInput = e.target.value;
+            if (userInput.toLowerCase() === "error") {
+              subscriber.error(
+                "Se ingreso la clave para deterner el Obervable."
+              );
+            } else if (userInput.toLowerCase() === "complete") {
+              subscriber.complete();
+            } else {
+              return userInput.split("").reverse().join("");
+            }
+          })
+        )
+        .subscribe(
+          (invertedText) => ($invertedText.textContent = invertedText),
+          (error) => {
+            console.log(error);
+            $userText.disable = true;
+            $invertedText.textContent = "";
+          },
+          () => {
+            $userText.disable = true;
+            $invertedText.textContent = "";
+            console.log("La operacion termino con exito.");
+          }
+        );
+
+      setTimeout(() => {
+        subscriber.unsubscribe();
+        console.log("unsuscribe.");
+      }, 30 * 1000);
+    </script>
+  </body>
+</html>
