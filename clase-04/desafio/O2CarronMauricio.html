@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"></script>
-    <!-- <script src="https://unpkg.com/@reactivex/rxjs@6.6.3/dist/global/rxjs.umd.js"></script> -->
     <title>Desafio Obersables - Clase 04</title>
   </head>
   <body>
@@ -16,8 +15,8 @@
     <span id="inverted-text"></span>
 
     <script type="module">
-      import { fromEvent } from "https://dev.jspm.io/rxjs@6/_esm2015";
-      import { map } from "https://dev.jspm.io/rxjs@6/_esm2015/operators";
+      const { fromEvent } = rxjs;
+      const { map } = rxjs.operators;
 
       const $userText = document.querySelector("#user-text");
       const $invertedText = document.querySelector("#inverted-text");
