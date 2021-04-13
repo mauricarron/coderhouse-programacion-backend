@@ -1,7 +1,7 @@
 //INSTALACION DE PAQUETES CON NPM
-//USO DE LIBRERIA MOMENTJS
+//USO DE LIBRERIA MOMENTJS con import ES6
 
-const moment = require("moment");
+import moment from "moment";
 
 const today = moment();
 const birth = moment("19890807");
