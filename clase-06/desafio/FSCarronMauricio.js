@@ -54,5 +54,5 @@ class Archivo {
   await miProducto.guardar("Zapatillas", 5500, "mizapatillas.jpg");
 
   await miProducto.leer();
-  await miProducto.borrar();
+  // await miProducto.borrar();
 })();
