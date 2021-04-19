@@ -1,15 +1,15 @@
 import express, { json } from "express";
+import { Producto } from "./producto.js";
+const prod = new Producto();
 
 const app = express();
 const PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const listaProductos = [];
-let nextIdProductos = 0;
-
 app.get("/api/productos", (req, res) => {
-  if (listaProductos.length === 0) {
+  const listaProductos = prod.get();
+  if (!listaProductos) {
     res.json({ error: "no hay productos cargados" });
   } else {
     res.json(listaProductos);
@@ -18,22 +18,20 @@ app.get("/api/productos", (req, res) => {
 
 app.get("/api/productos/:id", (req, res) => {
   const { id } = req.params;
-  const reqProducto = listaProductos.filter((product) => product.id === id);
-  console.log(reqProducto);
+  const reqProduct = prod.getByID(id);
 
-  if (reqProducto.length === 0) {
+  if (!reqProduct) {
     res.json({ error: "producto no encontrado" });
   } else {
-    res.json(reqProducto);
+    res.json(reqProduct);
   }
 });
 
 app.post("/api/productos", (req, res) => {
-  const producto = req.body;
-  producto.id = ++nextIdProductos;
-  listaProductos.push(producto);
+  const data = req.body;
+  prod.add(data);
 
-  res.json(producto);
+  res.json(data);
 });
 
 const server = app.listen(PORT, () => {
