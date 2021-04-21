@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ejercicio Pag. 19</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="p-4">
+    <h1 class="mb-2">Formularios de Ingreso</h1>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-4 mt-4">
+        <h2>Personas</h2>
+        <form id="form-personas" action="/api/personas/" method="post">
+          <div class="form-group">
+            <input
+              type="text"
+              name="nombre"
+              id="nombre"
+              placeholder="Nombre"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="apellido"
+              id="apellido"
+              placeholder="Apellido"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="number"
+              name="edad"
+              id="edad"
+              placeholder="Edad"
+              class="form-control"
+            />
+          </div>
+          <button class="btn btn-block btn-primary">Ingresar</button>
+        </form>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4 mt-4">
+        <h2>Mascotas</h2>
+        <form id="form-mascotas" action="/api/mascotas" method="post">
+          <div class="form-group">
+            <input
+              type="text"
+              name="nombre"
+              id="nombre"
+              placeholder="Nombre"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="raza"
+              id="raza"
+              placeholder="Raza"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="number"
+              name="edad"
+              id="edad"
+              placeholder="Edad"
+              class="form-control"
+            />
+          </div>
+          <button type="submit" class="btn btn-block btn-primary">
+            Ingresar
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
