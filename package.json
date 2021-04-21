@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "name": "desafio2",
+  "name": "programacion-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Repositorio del curso Programación en Backend de CoderHouse, con ejercicios de clase y desafios.",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
