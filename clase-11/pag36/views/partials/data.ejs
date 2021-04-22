@@ -1,0 +1,27 @@
+<h2>Historial de ingresos</h2>
+<% if(data.length > 0){ %>
+<table class="table table-borderless table-hover table-responsive align-middle">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.forEach(persona => { %>
+    <tr>
+      <td class="align-middle"><%= persona.nombre %></td>
+      <td class="align-middle"><%= persona.apellido %></td>
+      <td class="align-middle"><%= persona.edad %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+
+  <caption>
+    Personas ingresadas
+  </caption>
+</table>
+<% } else { %>
+<p class="alert alert-primary">No hay datos ingresados</p>
+<% } %>
